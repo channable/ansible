@@ -953,7 +953,7 @@ class TaskExecutor:
             raise AnsibleError("Unable to find location of '%s'" % filename)
 
         p = subprocess.Popen(
-            [python, find_file_in_path('ansible-connection'), to_text(os.getppid())],
+            [find_file_in_path('ansible-connection'), to_text(os.getppid())],
             stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE
         )
         os.close(slave)
