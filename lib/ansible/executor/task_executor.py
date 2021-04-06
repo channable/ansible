@@ -1122,10 +1122,9 @@ def start_connection(play_context, variables, task_uuid):
         'ANSIBLE_NETCONF_PLUGINS': netconf_loader.print_paths(),
         'ANSIBLE_TERMINAL_PLUGINS': terminal_loader.print_paths(),
     })
-    python = sys.executable
     master, slave = pty.openpty()
     p = subprocess.Popen(
-        [python, ansible_connection, to_text(os.getppid()), to_text(task_uuid)],
+        [ansible_connection, to_text(os.getppid()), to_text(task_uuid)],
         stdin=slave, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env
     )
     os.close(slave)
